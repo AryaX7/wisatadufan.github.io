@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Statistik Diagram Batang</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+
+    #chart-container {
+      text-align: center;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #bar-chart {
+      width: 60%;
+      max-width: 600px;
+      height: 300px;
+      margin: 20px auto;
+    }
+
+    #go-to-home-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    #go-to-home-button:hover {
+      background-color: #297fb8;
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <button id="go-to-home-button" onclick="goToHome()">Go to Home</button>
+
+<div id="chart-container">
+  <h2>Data Statistik Pengunjung Website</h2>
+  <canvas id="bar-chart"></canvas>
+</div>
+
+<script>
+  // Data statistik dari minggu ke 1 sampai minggu ke 4
+  const weekLabels = ['Minggu 1', 'Minggu 2', 'Minggu 3', 'Minggu 4'];
+  const visitorData = [30, 45, 60, 25];
+
+  // Inisialisasi Chart
+  const ctx = document.getElementById('bar-chart').getContext('2d');
+  const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: weekLabels,
+      datasets: [{
+        label: 'Jumlah Pengunjung',
+        data: visitorData,
+        backgroundColor: '#3498db', // Warna batang
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+  function goToHome() {
+    window.location.href = 'index.html';
+  }
+</script>
+
+</body>
+</html>
